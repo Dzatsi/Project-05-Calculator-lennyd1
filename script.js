@@ -45,7 +45,83 @@ buttons.forEach(button => {
                 }
             }
 
+        } else {            
+            operateur += btnValue;
+            if (input.value !== '') {
+                switch (btnValue) {
+                    case '+':
+                        input.value = '';
+                        verifSigne = true;
+                        if (!historiqueClc.textContent.includes('=')) {
+                            historiqueClc.textContent = viewHist + " + "
+                        } else {
+                            historiqueClc.textContent = calcul + ' + ';
+                        }
+                        viewHist = "";
+                        calcul += '+';
+                        event.preventDefault();
+                        break;
+                    case '-':
+                        verifSigne = true;
+                        input.value = '';
+                        if (!historiqueClc.textContent.includes('=')) {
+                            historiqueClc.textContent = viewHist +  " - "
+                        } else {
+                            historiqueClc.textContent = calcul + ' - '
+                        }
+                        viewHist = "";
+                        calcul += '-';
+                        event.preventDefault();
+                        break;
+                    case '×':
+                        verifSigne = true;
+                        input.value = '';
+                        if (!historiqueClc.textContent.includes('=')) {
+                            historique.textContent = viewHist + " * "
+                        } else {
+                            historiqueClc.textContent = calcul + ' * '
+                        }
+                        viewHist = "";
+                        calcul += '*';
+                        event.preventDefault();
+                        break;
+                    case '÷':
+                        verifSigne = true;
+                        inputcontenairs.value = '';
+                        if (!historiqueClc.textContent.includes('=')) {
+                            historiqueClc.textContent = viewHist + " ÷ "
+                        } else {
+                            historiqueClc.textContent = calcul + ' ÷ '
+                        }
+                        viewHist = "";
+                        calcul += '/';
+                        event.preventDefault();
+                        break;
+                    case '%':
+                        input.value = eval(calcul) / 100;
+                        historiqueClc.textContent = input.value + " % "
+                        event.preventDefault();
+                        break;
 
+                    case '=':
+                        if (!historiqueClc.textContent.includes('=')) {
+                            if(!verifSigne) {
+                                historiqueClc.textContent = "";
+                            }else{
+                                historiqueClc.textContent += viewHist + " = "
+                                input.value = eval(calcul);
+                                const val = eval(calcul);
+                                calcul = eval(calcul);
+                            }
+                            event.preventDefault();
+                            break;
+                        } else {
+                            calcul = eval(val + calcul);
+                            break;
+                        }
+
+
+                   
 
 
 
