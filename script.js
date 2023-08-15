@@ -80,7 +80,7 @@ minusBtn.addEventListener('click', function(event) {
     const convNmbr = calculCourant;
     calculHistoric.textContent = convNmbr;
 });
-    
+
 plusBtn.addEventListener("click", function(event) {
     event.preventDefault();
     calculCourant += "+";
@@ -103,7 +103,7 @@ equalsBtn.addEventListener("click", function (event){
     event.preventDefault();
     const valueInput = eval(calculCourant);
     input.value = valueInput;
-    calculHistoric.innerHTML = calculCourant + "=";
+    calculHistoric.textContent = calculCourant + "=";
 })
 
 
