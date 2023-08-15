@@ -65,70 +65,45 @@ dot.addEventListener('click', function() {
 
 dividebyBtn.addEventListener("click", function(event) {
     event.preventDefault();
-    if(btnCourant !== ""){
-        calculCourant += "" + operCourant + "" + btnCourant;
-        operCourant = "/";
-        calculHistoric.textContent = btnCourant;
-        btnCourant = "";
-    }
+    calculCourant += "/";
+    calculHistoric.textContent = calculCourant;
+    input.value = "";
+    const convNmbr = calculCourant;
+    calculHistoric.textContent = convNmbr;
 });
-
+    
 minusBtn.addEventListener('click', function(event) {
     event.preventDefault();
-    if(btnCourant !== "") {
-        calculCourant += "" + operCourant + "" + btnCourant;
-        operCourant = "-"
-        calculHistoric.textContent = btnCourant;
-    }
+    calculCourant += "-";
+    calculHistoric.textContent = calculCourant;
+    input.value = "";
+    const convNmbr = calculCourant;
+    calculHistoric.textContent = convNmbr;
 });
-
+    
 plusBtn.addEventListener("click", function(event) {
     event.preventDefault();
-    if(btnCourant !== "") {
-        calculCourant += "" + operCourant + "" + btnCourant;
-        operCourant = "+"
-        calculHistoric.textContent = btnCourant;
-        btnCourant = ""
-    }
+    calculCourant += "+";
+    calculHistoric.textContent = calculCourant;
+    input.value = "";
+    const convNmbr = calculCourant;
+    calculHistoric.textContent = convNmbr;
 });
-
+    
 timesBtn.addEventListener('click', function(event) {
     event.preventDefault();
-    if(btnCourant !== "") {
-        calculCourant += "" + operCourant + "" + btnCourant;
-        operCourant = "*"
-        calculHistoric.textContent = btnCourant;
-        btnCourant = ""
-    }
+    calculCourant += "*";
+    calculHistoric.textContent = calculCourant;
+    input.value = "";
+    const convNmbr = calculCourant;
+    calculHistoric.textContent = convNmbr;
 });
 
-equalsBtn.addEventListener('click', function(event) {
+equalsBtn.addEventListener("click", function (event){
     event.preventDefault();
-    if(btnCourant !== "" && operCourant !== "") {
-        calculCourant += "" + operCourant + "" + btnCourant;
-        calculHistoric.textContent = calculCourant + "=";
-        let resultat;
-        switch(operCourant){
-            case "+":
-                resultat = eval(calculCourant);
-            break;
-            case "-":
-                resultat = eval(calculCourant);
-            break;
-            case "*":
-                resultat = eval(calculCourant);
-            break;
-            case "/":
-                resultat = eval(calculCourant);
-            break;
-            default:
-                break;  
-         }
-         input.value = resultat.toString();
-         btnCourant = resultat.toString();
-         operCourant = "";
-         calculCourant = "";
-    }
+    const valueInput = eval(calculCourant);
+    input.value = valueInput;
+    calculHistoric.innerHTML = calculCourant + "=";
 })
 
 
