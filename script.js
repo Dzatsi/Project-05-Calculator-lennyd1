@@ -145,7 +145,12 @@ buttons.forEach(button => {
                             calcul += '.';
                         }
                 }
-            }
+            } else if (btnValue === 'AC') {
+                input.value = '';
+                historiqueClc.textContent = "";
+                calcul = '';
+                viewHist = "";
+            } 
 
 
 
