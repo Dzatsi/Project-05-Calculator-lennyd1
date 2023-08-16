@@ -14,11 +14,10 @@ let viewHist = "";
 let operateur = "";
 var verifSigne = false;
 
-// add events
+// add events and functionality
 buttons.forEach(button => {
     button.addEventListener('click', event => {
         const btnValue = button.textContent;
-
         if (btnValue >= '0' && btnValue <= '9') {
             if (input.value === '0' && btnValue === '0') {
                 input.value = input.value;
@@ -32,7 +31,7 @@ buttons.forEach(button => {
                 if (!historiqueClc.textContent.includes('=')) {
                     calcul += btnValue;
                     input.value += btnValue;
-                    viewHis.value += btnValue;
+                    viewHist += btnValue;
                     operateur += btnValue;
                 } else {
                     input.value = '';
@@ -41,7 +40,7 @@ buttons.forEach(button => {
                     input.value += btnValue;
                     viewHist += btnValue;
                     calcul += btnValue;
-                    operateur += buttonValue;
+                    operateur += btnValue;
                 }
             }
 
@@ -77,7 +76,7 @@ buttons.forEach(button => {
                         verifSigne = true;
                         input.value = '';
                         if (!historiqueClc.textContent.includes('=')) {
-                            historique.textContent = viewHist + " * "
+                            historiqueClc.textContent = viewHist + " * "
                         } else {
                             historiqueClc.textContent = calcul + ' * '
                         }
@@ -94,7 +93,7 @@ buttons.forEach(button => {
                             historiqueClc.textContent = calcul + ' ÷ '
                         }
                         viewHist = "";
-                        calcul += '/';
+                        calcul += '÷';
                         event.preventDefault();
                         break;
                     case '%':
@@ -110,18 +109,18 @@ buttons.forEach(button => {
                             }else{
                                 historiqueClc.textContent += viewHist + " = "
                                 input.value = eval(calcul);
-                                const val = eval(calcul);
                                 calcul = eval(calcul);
                             }
                             event.preventDefault();
                             break;
                         } else {
+                            const val = eval(calcul);
                             calcul = eval(val + calcul);
                             break;
                         }
                     case 'AC':
                         input.value = '';
-                        historiqueClc.textContent = " ";
+                        historiqueClc.textContent = "";
                         calcul = '';
                         viewHist = "";
                         event.preventDefault();
@@ -146,7 +145,7 @@ buttons.forEach(button => {
                             calcul += '.';
                         }
                 }
-           
+            }
 
 
 
