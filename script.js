@@ -119,9 +119,34 @@ buttons.forEach(button => {
                             calcul = eval(val + calcul);
                             break;
                         }
+                    case 'AC':
+                        input.value = '';
+                        historiqueClc.textContent = " ";
+                        calcul = '';
+                        viewHist = "";
+                        event.preventDefault();
+                        break;
+                    case 'C':
+                        viewHist = viewHist.slice(0, -1);
+                        input.value = input.value.slice(0, -1);
+                        calcul = calcul.slice(0, -1);
+                        event.preventDefault();
+                        break;
+                    case '+/-':
+                        input.value = -input.value;
+                        calcul = -calcul;
+                        event.preventDefault();
+                        break;
 
+                    case '.':
 
-                   
+                        if (!input.value.includes('.')) {
+                            input.value += '.';
+                            viewHist += ".";
+                            calcul += '.';
+                        }
+                }
+           
 
 
 
