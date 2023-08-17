@@ -59,7 +59,7 @@ buttons.forEach(button => {
                         viewHist = "";
                         calcul += '+';
                         event.preventDefault();
-                        break;
+                    break;
                     case '-':
                         verifSigne = true;
                         input.value = '';
@@ -71,7 +71,7 @@ buttons.forEach(button => {
                         viewHist = "";
                         calcul += '-';
                         event.preventDefault();
-                        break;
+                    break;
                     case '×':
                         verifSigne = true;
                         input.value = '';
@@ -83,24 +83,24 @@ buttons.forEach(button => {
                         viewHist = "";
                         calcul += '*';
                         event.preventDefault();
-                        break;
+                    break;
                     case '÷':
+                        event.preventDefault();
                         verifSigne = true;
                         inputcontenairs.value = '';
                         if (!historiqueClc.textContent.includes('=')) {
-                            historiqueClc.textContent = viewHist + " ÷ "
+                                historiqueClc.textContent = viewHist + " ÷ "
                         } else {
                             historiqueClc.textContent = calcul + ' ÷ '
                         }
-                        viewHist = "";
-                        calcul += '÷';
-                        event.preventDefault();
-                        break;
+                            viewHist = "";
+                            calcul += '/';
+                    break;
                     case '%':
                         input.value = eval(calcul) / 100;
                         historiqueClc.textContent = input.value + " % "
                         event.preventDefault();
-                        break;
+                    break;
 
                     case '=':
                         if (!historiqueClc.textContent.includes('=')) {
@@ -112,7 +112,7 @@ buttons.forEach(button => {
                                 calcul = eval(calcul);
                             }
                             event.preventDefault();
-                            break;
+                    break;
                         } else {
                             const val = eval(calcul);
                             calcul = eval(val + calcul);
@@ -124,18 +124,18 @@ buttons.forEach(button => {
                         calcul = '';
                         viewHist = "";
                         event.preventDefault();
-                        break;
+                    break;
                     case 'C':
                         viewHist = viewHist.slice(0, -1);
                         input.value = input.value.slice(0, -1);
                         calcul = calcul.slice(0, -1);
                         event.preventDefault();
-                        break;
+                    break;
                     case '+/-':
                         input.value = -input.value;
                         calcul = -calcul;
                         event.preventDefault();
-                        break;
+                    break;
 
                     case '.':
 
@@ -150,7 +150,20 @@ buttons.forEach(button => {
                 historiqueClc.textContent = "";
                 calcul = '';
                 viewHist = "";
-            } 
+            } else if (btnValue >= '0' && btnValue <= '9' && historiqueClc.textContent.includes('=')) {
+                viewHist = "";
+                calcul = eval(calcul);
+                historiqueClc.textContent = calcul;
+
+            }
+            else if (input.textContent === "" && isNaN(historiqueClc.textContent.slice(-1))){
+                    historiqueClc.textContent = historiqueClc.textContent.slice(0, -1) + "+";
+                    operateur = operateur.slice(0, -1) + "+";
+                    viewHist = "";
+                    }
+        }
+    });
+});
 
 
 
