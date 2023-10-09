@@ -3,7 +3,7 @@
 
 // TODO: Faire la manipulation du DOM dans ce fichier
 
-// Récuperons les élement html
+// Let's retrieve the html elements
 const input = document.getElementById('input');
 const buttons = document.querySelectorAll('button');
 const historiqueClc = document.querySelector('p');
@@ -15,6 +15,14 @@ let operateur = "";
 var verifSigne = false;
 
 // add events and functionality
+
+//  to prevent entering a number using the keyboard
+ input.addEventListener('keydown', (event) => {
+  event.preventDefault();
+ });
+// to hide the flashing bar in the input element
+ input.style.caretColor = 'transparent';
+ 
 buttons.forEach(button => {
     button.addEventListener('click', event => {
         const btnValue = button.textContent;
