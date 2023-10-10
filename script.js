@@ -8,9 +8,9 @@ const input = document.getElementById('input');
 const buttons = document.querySelectorAll('button');
 const historiqueClc = document.querySelector('p');
 
-// déclaration variable pour calcul
+// variable declaration for calculation
 let calcul = '';
-let viewHist = "";
+let histiriCalcul = "";
 let operateur = "";
 var verifSigne = false;
 
@@ -22,7 +22,7 @@ var verifSigne = false;
  });
 // to hide the flashing bar in the input element
  input.style.caretColor = 'transparent';
- 
+
 buttons.forEach(button => {
     button.addEventListener('click', event => {
         const btnValue = button.textContent;
@@ -84,7 +84,7 @@ buttons.forEach(button => {
                         verifSigne = true;
                         input.value = '';
                         if (!historiqueClc.textContent.includes('=')) {
-                            historiqueClc.textContent = viewHist + " * "
+                            historiqueClc.textContent = viewHist + " × "
                         } else {
                             historiqueClc.textContent = calcul + ' * '
                         }
@@ -99,7 +99,7 @@ buttons.forEach(button => {
                         if (!historiqueClc.textContent.includes('=')) {
                                 historiqueClc.textContent = viewHist + " ÷ "
                         } else {
-                            historiqueClc.textContent = calcul + ' ÷ '
+                            historiqueClc.textContent = calcul + ' / '
                         }
                             viewHist = "";
                             calcul += '/';
